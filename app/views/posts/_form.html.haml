@@ -14,12 +14,12 @@
     = f.fields_for :images do |i|
       - if i.object.image.blank?
         = i.label :image
-        = i.file_field :image, class: "before-file-field"
+        = i.file_field :image
       - else
         = image_tag(i.object.image.url)
         = i.label :image do
           %p.edit-btn 編集
-          = i.file_field :image, class: "after-file-field"
+          = i.file_field :image, class: "edit-file-field"
           = i.hidden_field :id, value: i.object.id
   .actions
     = f.submit
