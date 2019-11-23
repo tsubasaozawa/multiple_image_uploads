@@ -1,0 +1,25 @@
+= form_with(model: post, local: true) do |f|
+  - if post.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - post.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.fields_for :images do |i|
+      - if i.object.image.blank?
+        = i.label :image
+        = i.file_field :image, class: "before-file-field"
+      - else
+        = image_tag(i.object.image.url)
+        = i.label :image do
+          %p.edit-btn 編集
+          = i.file_field :image, class: "after-file-field"
+          = i.hidden_field :id, value: i.object.id
+  .actions
+    = f.submit
