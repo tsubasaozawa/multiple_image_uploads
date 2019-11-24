@@ -31,7 +31,7 @@ Things you may want to cover:
 ## carrierwaveの導入（詳細は割愛）
 
 ## 投稿フォームの作成
-1.アソシエーションの設定
+1.ネストフォーム用のアソシエーション設定
 ＜post.rb＞
 accepts_nested_attributes_for :images
 
