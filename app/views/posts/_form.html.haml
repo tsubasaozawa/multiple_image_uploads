@@ -15,9 +15,9 @@
       - if i.object.image.blank? # 新規投稿用
         = i.label :image
         = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", id: 'img_prev' # 「id: 'img_prev'」はプレビュー表示用
-        = i.file_field :image, id: 'post_img' # 「id: 'post_img'」はプレビュー表示用
+        = i.file_field :image, id: 'post_img'
       - else # 投稿内容編集用
-        = image_tag(i.object.image.url), id: 'img_prev' # 「id: 'img_prev'」はプレビュー表示用
+        = image_tag i.object.image.url, id: 'img_prev' # 「id: 'img_prev'」はプレビュー表示用
         = i.label :image do
           %p.edit-btn 編集
           = i.file_field :image, class: "edit-file-field", id: 'post_img' # 「id: 'post_img'」はプレビュー表示用
